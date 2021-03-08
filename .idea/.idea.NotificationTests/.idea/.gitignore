@@ -1,0 +1,11 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/.idea.NotificationTests.iml
+/projectSettingsUpdater.xml
+/contentModel.xml
+/modules.xml
+# Datasource local storage ignored files
+/../../../../../../../:\sources\repos\KbAis.Desktop.Notifications.Exp\.idea\.idea.NotificationTests\.idea/dataSources/
+/dataSources.local.xml
