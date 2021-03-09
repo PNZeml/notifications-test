@@ -2,10 +2,10 @@ using System;
 using NotificationsTest.Application.Services.Dtos.NotificationDtos;
 
 namespace NotificationsTest.Application.Presentation.NotificationsList {
-    internal class NotificationItemClickEventArgs : EventArgs {
+    internal class NotificationClickEventArgs : EventArgs {
         public NotificationBase? Notification { get; }
 
-        public NotificationItemClickEventArgs(NotificationBase? notification) =>
+        public NotificationClickEventArgs(NotificationBase? notification) =>
             Notification = notification;
     }
 }

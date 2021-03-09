@@ -43,15 +43,63 @@ namespace NotificationsTest.Application.Presentation.Presenters {
                 Wristband = new WristbandDto { Id = 1, MacAddress = "FFFFFFF" },
                 OxygenSaturation = 97
             };
-            yield return new CriticalPulseRateNotificationDto() {
+            yield return new CriticalPulseRateNotificationDto {
                 Id = 2,
-                Type = NotificationType.CriticalOxygenSaturation,
+                Type = NotificationType.CriticalPulseRate,
                 IsCritical = true,
                 DateTime = new DateTime(2000, 01, 01, 00, 00, 00),
                 Employee = null,
                 Wristband = new WristbandDto { Id = 1, MacAddress = "FFFFFFF" },
                 PulseRate = 97
             };
+            yield return new EmployeeHasEnteredDangerousAreaNotificationDto {
+                Id = 2,
+                Type = NotificationType.EmployeeHasEnteredDangerousArea,
+                IsCritical = true,
+                DateTime = new DateTime(2000, 01, 01, 00, 00, 00),
+                Employee = new EmployeeDto { Id = 1, FirstName = "Goro", LastName = "Majima" },
+                StaticArea = new StaticAreaDto { Id = 1, Name = "Опасная зона" }
+            };
+            yield return new EmployeeHasEnteredDumptruckAreaNotificationDto {
+                Id = 2,
+                Type = NotificationType.EmployeeHasEnteredDumptruckArea,
+                IsCritical = true,
+                DateTime = new DateTime(2000, 01, 01, 00, 00, 00),
+                Employee = new EmployeeDto { Id = 1, FirstName = "Goro", LastName = "Majima" },
+                Dumptruck = new DumptruckDto { Id = "100", Model = "Foo", VehName = "Bar" },
+            };
+            yield return new EmployeeHasFallenNotificationDto() {
+                Id = 2,
+                Type = NotificationType.EmployeeHasFallen,
+                IsCritical = true,
+                DateTime = new DateTime(2000, 01, 01, 00, 00, 00),
+                Employee = new EmployeeDto { Id = 1, FirstName = "Goro", LastName = "Majima" },
+            };
+            yield return new LowBatteryChargeLevelDto() {
+                Id = 2,
+                Type = NotificationType.LowBatteryChargeLevel,
+                IsCritical = true,
+                DateTime = new DateTime(2000, 01, 01, 00, 00, 00),
+                Employee = new EmployeeDto { Id = 1, FirstName = "Goro", LastName = "Majima" },
+                BatteryChargeLevel = 99
+            };
+            yield return new WristbandIsNotAssignedNotificationDto {
+                Id = 2,
+                Type = NotificationType.WristbandIsNotAssigned,
+                IsCritical = true,
+                DateTime = new DateTime(2000, 01, 01, 00, 00, 00),
+                Wristband = new WristbandDto { Id = 1, MacAddress = "FF-FF-FF-FF-FF-00" }
+            };
+            for (var i = 0; i < NOTIFICATIONS_CAPACITY; i++)
+            {
+                yield return new EmployeeHasImmobilizedNotificationDto
+                {
+                    Id = i,
+                    Type = NotificationType.EmployeeHasImmobilized,
+                    IsCritical = false,
+                    Employee = new EmployeeDto {Id = 2, FirstName = "Phoenix", LastName = "Wright"}
+                };
+            }
         }
     }
 }

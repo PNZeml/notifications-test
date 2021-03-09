@@ -5,53 +5,52 @@ using Telerik.WinControls.Layouts;
 using Telerik.WinControls.UI;
 
 namespace NotificationsTest.Application.Presentation.NotificationsList.NotificationItems {
-    internal partial class CriticalPulseRateElement {
-        private LightVisualElement subjectTypeLabel = null!;
-        private LightVisualElement subjectValueLabel = null!;
-        private LightVisualElement pulseRateLabel = null!;
+    internal partial class EmployeeHasEnteredDumptruckAreaElement {
+        private LightVisualElement employeeLabel = null!;
+        private LightVisualElement equipmentLabel = null!;
 
         protected override RadElement CreateMiddle() {
             return new StackLayoutPanel {
                 Orientation = Orientation.Vertical,
                 Margin = new Padding(6, 0, 6, 0),
-                Children = { CreateSubjectElement(), CreatePulseRateElement() }
+                Children = { CreateSubjectElement(), CreateEquipmentElement() }
             };
 
             RadElement CreateSubjectElement() {
-                subjectTypeLabel = new LightVisualElement {
-                    Text = "ФИО:",
-                    Font = new Font("Segoe UI", 9.75f),
-                    TextAlignment = ContentAlignment.MiddleLeft
-                };
-                DockLayoutPanel.SetDock(subjectTypeLabel, Dock.Left);
-
-                subjectValueLabel = new LightVisualElement {
-                    Font = new Font("Segoe UI", 10f, FontStyle.Bold),
-                    TextAlignment = ContentAlignment.MiddleLeft
-                };
-                DockLayoutPanel.SetDock(subjectValueLabel, Dock.Right);
-
-                return new DockLayoutPanel {
-                    Children = { subjectTypeLabel, subjectValueLabel }
-                };
-            }
-
-            RadElement CreatePulseRateElement() {
                 var label = new LightVisualElement {
-                    Text = "Частота пульса:",
+                    Text = "ФИО:",
                     Font = new Font("Segoe UI", 9.75f),
                     TextAlignment = ContentAlignment.MiddleLeft
                 };
                 DockLayoutPanel.SetDock(label, Dock.Left);
 
-                pulseRateLabel = new LightVisualElement {
+                employeeLabel = new LightVisualElement {
                     Font = new Font("Segoe UI", 10f, FontStyle.Bold),
                     TextAlignment = ContentAlignment.MiddleLeft
                 };
-                DockLayoutPanel.SetDock(pulseRateLabel, Dock.Right);
+                DockLayoutPanel.SetDock(employeeLabel, Dock.Right);
 
                 return new DockLayoutPanel {
-                    Children = { label, pulseRateLabel }
+                    Children = { label, employeeLabel }
+                };
+            }
+
+            RadElement CreateEquipmentElement() {
+                var label = new LightVisualElement {
+                    Text = "Оборудование:",
+                    Font = new Font("Segoe UI", 9.75f),
+                    TextAlignment = ContentAlignment.MiddleLeft
+                };
+                DockLayoutPanel.SetDock(label, Dock.Left);
+
+                equipmentLabel = new LightVisualElement {
+                    Font = new Font("Segoe UI", 10f, FontStyle.Bold),
+                    TextAlignment = ContentAlignment.MiddleLeft
+                };
+                DockLayoutPanel.SetDock(equipmentLabel, Dock.Right);
+
+                return new DockLayoutPanel {
+                    Children = { label, equipmentLabel }
                 };
             }
         }

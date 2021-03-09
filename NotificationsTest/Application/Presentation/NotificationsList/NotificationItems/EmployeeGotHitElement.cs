@@ -2,10 +2,10 @@ using NotificationsTest.Application.Services.Dtos.NotificationDtos;
 using Telerik.WinControls;
 
 namespace NotificationsTest.Application.Presentation.NotificationsList.NotificationItems {
-    internal partial class CriticalHeartRateVariabilityElement : NotificationElementBase {
+    internal partial class EmployeeGotHitElement : NotificationElementBase {
         public override void UpdateContent(NotificationBase notification) {
             base.UpdateContent(notification);
-            var n = (CriticalHeartRateVariabilityNotificationDto)Notification!;
+            var n = (EmployeeGotHitNotificationDto)Notification!;
             if (n.Employee != null) {
                 subjectTypeLabel.Text = "ФИО:";
                 subjectValueLabel.Text = n.Employee.ToString();
@@ -15,7 +15,6 @@ namespace NotificationsTest.Application.Presentation.NotificationsList.Notificat
                 subjectValueLabel.Text = n.Wristband!.MacAddress;
                 SubjectLocationButton.Visibility = ElementVisibility.Collapsed;
             }
-            heartRateVariabilityLabel.Text = $"{n.HeartRateVariability}%";
         }
     }
 }

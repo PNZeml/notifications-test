@@ -15,7 +15,7 @@ namespace NotificationsTest.Application.Presentation.Views {
             InitializeViewEvents();
             RadMessageBox.SetThemeName(thmFluent.ThemeName);
         }
-        
+
         public void UpdateNotifications(IEnumerable<NotificationBase> notifications) {
             lcNotifications.DataSource = notifications;
         }
@@ -30,16 +30,16 @@ namespace NotificationsTest.Application.Presentation.Views {
             };
         }
 
-        private void ShowNotificationLocationClick(object _, NotificationItemClickEventArgs args) {
+        private void ShowNotificationLocationClick(object _, NotificationClickEventArgs args) {
             RadMessageBox.Show($"{args.Notification?.Type.ToReadable()}, {args.Notification?.Id}");
         }
 
-        private void ShowSubjectLocationClick(object _, NotificationItemClickEventArgs args) {
-            
-        } 
-        
-        private void ProcessNotificationClick(object _, NotificationItemClickEventArgs args) {
-            
+        private void ShowSubjectLocationClick(object _, NotificationClickEventArgs args) {
+
+        }
+
+        private void ProcessNotificationClick(object _, NotificationClickEventArgs args) {
+
         }
     }
 }

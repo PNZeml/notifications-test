@@ -3,51 +3,37 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using NotificationsTest.Application.Services.Dtos.NotificationDtos;
+using NotificationsTest.Domain;
 using Telerik.WinControls;
 using Telerik.WinControls.Layouts;
 using Telerik.WinControls.UI;
 
 namespace NotificationsTest.Application.Presentation.NotificationsList {
-    internal abstract class NotificationItemBase : RadElement {
-        // HEADER
+    internal abstract class NotificationElementBase : RadElement {
         protected LightVisualElement DateTimeLabel = null!;
         protected LightVisualElement TypePictureBox = null!;
         protected LightVisualElement DescriptionLabel = null!;
-        // FOOTER
         protected RadButtonElement NotificationLocationButton = null!;
         protected RadButtonElement SubjectLocationButton = null!;
         protected RadButtonElement ProcessNotificationButton = null!;
-
         protected NotificationBase? Notification;
-        
-        public event EventHandler<NotificationItemClickEventArgs>? ShowNotificationLocationClick;
-        public event EventHandler<NotificationItemClickEventArgs>? ShowSubjectLocationClick;
-        public event EventHandler<NotificationItemClickEventArgs>? ProcessNotificationClick;
 
-        public abstract void UpdateContent(NotificationBase notification);
+        public event EventHandler<NotificationClickEventArgs>? NotificationLocationClick;
+        public event EventHandler<NotificationClickEventArgs>? SubjectLocationClick;
+        public event EventHandler<NotificationClickEventArgs>? ProcessNotificationClick;
 
-        protected void ShowNotificationLocationClickInvoke() =>
-            ShowNotificationLocationClick?.Invoke(
-                this,
-                new NotificationItemClickEventArgs(Notification)
-            );
+        public virtual void UpdateContent(NotificationBase notification) {
+            Notification = notification;
+            DateTimeLabel.Text = Notification.DateTime.ToLongDateString();
+            DescriptionLabel.Text = Notification.Type.ToReadable();
+        }
 
-        protected void ShowSubjectLocationClickInvoke() =>
-            ShowSubjectLocationClick?.Invoke(
-                this,
-                new NotificationItemClickEventArgs(Notification)
-            );
+        protected abstract RadElement CreateMiddle();
 
-        protected void ProcessNotificationClickInvoke() =>
-            ProcessNotificationClick?.Invoke(
-                this,
-                new NotificationItemClickEventArgs(Notification)
-            );
-        
         protected override void CreateChildElements() {
             Children.Add(CreateHostElement());
-            NotificationLocationButton.Click += (_, _) => ShowNotificationLocationClickInvoke();
-            SubjectLocationButton.Click += (_, _) => ShowSubjectLocationClickInvoke();
+            NotificationLocationButton.Click += (_, _) => NotificationLocationClickInvoke();
+            SubjectLocationButton.Click += (_, _) => SubjectLocationClickInvoke();
             ProcessNotificationButton.Click += (_, _) => ProcessNotificationClickInvoke();
 
             RadElement CreateHostElement() =>
@@ -55,9 +41,18 @@ namespace NotificationsTest.Application.Presentation.NotificationsList {
                     Orientation = Orientation.Vertical,
                     Children = { CreateHeader(), CreateMiddle(), CreateFooter() }
                 };
+
+            void NotificationLocationClickInvoke() => NotificationLocationClick?
+                .Invoke(this, new NotificationClickEventArgs(Notification));
+
+            void SubjectLocationClickInvoke() => SubjectLocationClick?
+                .Invoke(this, new NotificationClickEventArgs(Notification));
+
+            void ProcessNotificationClickInvoke() => ProcessNotificationClick?
+                .Invoke(this, new NotificationClickEventArgs(Notification));
         }
-        
-        protected virtual RadElement CreateHeader() {
+
+        private RadElement CreateHeader() {
             return new StackLayoutPanel {
                 Orientation = Orientation.Vertical,
                 Margin = new Padding(6, 6, 6, 0),
@@ -96,9 +91,7 @@ namespace NotificationsTest.Application.Presentation.NotificationsList {
             }
         }
 
-        protected abstract RadElement CreateMiddle();
-
-        protected virtual RadElement CreateFooter() {
+        private RadElement CreateFooter() {
             NotificationLocationButton = new RadButtonElement {
                 AutoSize = false,
                 Size = new Size(42, 42),

@@ -86,14 +86,31 @@
     <Reference Include="TelerikCommon, Version=2021.1.119.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Application\Presentation\NotificationsList\NotificationItemBase.cs" />
-    <Compile Include="Application\Presentation\NotificationsList\NotificationItemClickEventArgs.cs" />
+    <Compile Include="Application\Presentation\NotificationsList\NotificationElementBase.cs" />
+    <Compile Include="Application\Presentation\NotificationsList\NotificationClickEventArgs.cs" />
     <Compile Include="Application\Presentation\NotificationsList\NotificationItems\CriticalHeartRateVariabilityElement.cs" />
     <Compile Include="Application\Presentation\NotificationsList\NotificationItems\CriticalHeartRateVariabilityElement.Design.cs" />
     <Compile Include="Application\Presentation\NotificationsList\NotificationItems\CriticalOxygenSaturationElement.cs" />
     <Compile Include="Application\Presentation\NotificationsList\NotificationItems\CriticalOxygenSaturationElement.Design.cs" />
     <Compile Include="Application\Presentation\NotificationsList\NotificationItems\CriticalPulseRateElement.cs" />
     <Compile Include="Application\Presentation\NotificationsList\NotificationItems\CriticalPulseRateElement.Design.cs" />
+    <Compile Include="Application\Presentation\NotificationsList\NotificationItems\EmployeeGotHitElement.cs" />
+    <Compile Include="Application\Presentation\NotificationsList\NotificationItems\EmployeeGotHitElement.Design.cs" />
+    <Compile Include="Application\Presentation\NotificationsList\NotificationElementsProvider.cs" />
+    <Compile Include="Application\Presentation\NotificationsList\NotificationItems\EmployeeHasEnteredDangerousAreaElement.cs" />
+    <Compile Include="Application\Presentation\NotificationsList\NotificationItems\EmployeeHasEnteredDangerousAreaElement.Design.cs" />
+    <Compile Include="Application\Presentation\NotificationsList\NotificationItems\EmployeeHasEnteredDumptruckAreaElement.cs" />
+    <Compile Include="Application\Presentation\NotificationsList\NotificationItems\EmployeeHasEnteredDumptruckAreaElement.Design.cs" />
+    <Compile Include="Application\Presentation\NotificationsList\NotificationItems\EmployeeHasFallenElement.cs" />
+    <Compile Include="Application\Presentation\NotificationsList\NotificationItems\EmployeeHasFallenElement.Design.cs" />
+    <Compile Include="Application\Presentation\NotificationsList\NotificationItems\EmployeeHasImmobilizedElement.cs" />
+    <Compile Include="Application\Presentation\NotificationsList\NotificationItems\EmployeeHasImmobilizedElement.Design.cs" />
+    <Compile Include="Application\Presentation\NotificationsList\NotificationItems\EmployeeHasLeftEnterpriseAreaElement.cs" />
+    <Compile Include="Application\Presentation\NotificationsList\NotificationItems\EmployeeHasLeftEnterpriseAreaElement.Design.cs" />
+    <Compile Include="Application\Presentation\NotificationsList\NotificationItems\LowBatteryChargeLevelElement.cs" />
+    <Compile Include="Application\Presentation\NotificationsList\NotificationItems\LowBatteryChargeLevelElement.Design.cs" />
+    <Compile Include="Application\Presentation\NotificationsList\NotificationItems\WristbandIsNotAssignedElement.cs" />
+    <Compile Include="Application\Presentation\NotificationsList\NotificationItems\WristbandIsNotAssignedElement.Design.cs" />
     <Compile Include="Application\Presentation\NotificationsList\NotificationVisualItem.cs" />
     <Compile Include="Application\Presentation\Presenters\INotificationsPresenter.cs" />
     <Compile Include="Application\Presentation\Presenters\NotificationsPresenter.cs" />
@@ -111,6 +128,8 @@
     <Compile Include="Application\Services\Dtos\NotificationDtos\EmployeeHasEnteredDangerousAreaNotificationDto.cs" />
     <Compile Include="Application\Services\Dtos\NotificationDtos\EmployeeHasEnteredDumptruckAreaNotificationDto.cs" />
     <Compile Include="Application\Services\Dtos\NotificationDtos\EmployeeHasFallenNotificationDto.cs" />
+    <Compile Include="Application\Services\Dtos\NotificationDtos\EmployeeHasImmobilizedNotificationDto.cs" />
+    <Compile Include="Application\Services\Dtos\NotificationDtos\EmployeeHasLeftEnterpriseAreaNotificationDto.cs" />
     <Compile Include="Application\Services\Dtos\NotificationDtos\LowBatteryChargeLevelNotificationDto.cs" />
     <Compile Include="Application\Services\Dtos\NotificationDtos\NotificationBase.cs" />
     <Compile Include="Application\Services\Dtos\NotificationDtos\WristbandIsNotAssignedNotificationDto.cs" />
